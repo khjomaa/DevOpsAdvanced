@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookstack
+  labels:
+    app: bookstack
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bookstack
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: bookstack
+        tier: frontend
+    spec:
+      containers:
+        - name: bookstack
+          image: solidnerd/bookstack:0.27.5
+          env:
+            - name: DB_DATABASE
+              value: bookstack
+            - name: DB_HOST
+              value: mysql:3306
+            - name: DB_PASSWORD
+              value: secret
+            - name: DB_USERNAME
+              value: bookstack
+          resources: {}
+          ports:
+            - containerPort: 80
