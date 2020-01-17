@@ -2,8 +2,8 @@
 
 ### Terminal screenshot:
 
-![](/images/q_2_terminal.png)
+![](../images/q_2_terminal.png)
 
 ### Web browser screensots:
 
-![](/images/q_2_indexhtml.png)
+![](../images/q_2_indexhtml.png)
