@@ -1,0 +1,19 @@
+body {
+    margin: 2em;
+    text-align: center;
+    font-family: "Open Sans";
+    background: #ececec;
+}
+
+#show-text {
+    padding: 22px 0 5px;
+    overflow-y: auto;
+    max-height: 400px;
+    width: 100%;
+    font-size: large;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+}

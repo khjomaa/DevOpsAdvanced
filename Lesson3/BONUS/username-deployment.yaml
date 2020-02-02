@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: username
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: username
+  template:
+    metadata:
+      labels:
+        app: username
+    spec:
+      containers:
+        - name: username
+          image: khjomaa/db-creds-nginx:latest
+          resources:
+            limits:
+              memory: 128Mi
+              cpu: 250m
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: secret-volume
+              mountPath: /usr/share/nginx/html/creds
+              readOnly: true
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: db-creds
+            items:
+              - key: db_username
+                path: creds.txt
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: username-svc
+spec:
+  selector:
+    app: username
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
