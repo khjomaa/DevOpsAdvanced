@@ -5,7 +5,7 @@ After running the commands and trying to check if K8S installed successfully, I 
 
 ![](images/kubectl_error.png)
 
-After googling the error, I managed to solve the issue after running the following commands in **kube-1** machine:
+After googling the error, I managed to solve it by running the following commands in **kube-1** machine:
 ```shell script
 sudo cp /etc/kubernetes/admin.conf $HOME/
 sudo chown $(id -u):$(id -g) $HOME/admin.conf
