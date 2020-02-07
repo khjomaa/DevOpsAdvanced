@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: url
-          image: khjomaa/db-creds-nginx:latest
+          image: nginx:mainline-alpine
           resources:
             limits:
               memory: 128Mi
@@ -23,7 +23,7 @@ spec:
             - containerPort: 80
           volumeMounts:
             - name: secret-volume
-              mountPath: /usr/share/nginx/html/creds
+              mountPath: /usr/share/nginx/html
               readOnly: true
       volumes:
         - name: secret-volume
@@ -31,7 +31,7 @@ spec:
             secretName: db-creds
             items:
               - key: db_url
-                path: creds.txt
+                path: index.html
 ---
 apiVersion: v1
 kind: Service
