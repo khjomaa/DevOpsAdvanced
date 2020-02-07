@@ -1,5 +1,8 @@
 # Helm - TODO APP
 
+### Repo link:
+https://github.com/khjomaa/todo 
+
 ### Commands:
 
 1. ```helm create todo```
