@@ -1,0 +1,14 @@
+{{- if and .Values.mysql.persistence.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.mysql.persistence.existingClaim }}
+  labels:
+    app: {{ template "wordpress.fullname" . }}
+spec:
+  accessModes:
+    - {{ .Values.mysql.persistence.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.mysql.persistence.size }}
+  {{- end -}}

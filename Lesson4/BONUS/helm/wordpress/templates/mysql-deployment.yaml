@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ printf "%s-%s" .Release.Name .Values.mysql.db.type }}
+  labels:
+    {{- include "wordpress.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "mysql.selectorLabels" . | nindent 6 }}
+  {{- if .Values.mysql.updateStrategy }}
+  strategy: {{ toYaml .Values.mysql.updateStrategy | nindent 4 }}
+  {{- end}}
+  template:
+    metadata:
+      labels:
+        {{- include "mysql.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - image: {{ .Values.mysql.image.repository }}
+        name: {{ .Values.mysql.db.type }}
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ printf "%s-%s" .Values.mysql.db.type "pass" }}
+              key: password
+        ports:
+        - containerPort: {{ .Values.mysql.service.port }}
+          name: {{ .Values.mysql.db.type }}
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+      {{- if .Values.mysql.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.mysql.persistence.existingClaim | default (include "wordpress.fullname" .) }}
+      {{- end }}

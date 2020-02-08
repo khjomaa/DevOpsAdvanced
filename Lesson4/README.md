@@ -27,5 +27,5 @@ What to send me?
 ## Solution:
 1. Q1 - Q3: https://github.com/khjomaa/todo
 2. BONUS: 
-    * Helm - Working On it
-    * Kubespary - See README.md file inside kubespray folder  
+    * Helm - See README.md file inside BONUS/helm folder
+    * Kubespary - See README.md file inside BONUS/kubespray folder  

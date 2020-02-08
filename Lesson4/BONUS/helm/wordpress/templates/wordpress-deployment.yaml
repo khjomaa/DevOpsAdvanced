@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "wordpress.fullname" . }}
+  labels:
+    {{- include "wordpress.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "wordpress.selectorLabels" . | nindent 6 }}
+  {{- if .Values.wordpress.updateStrategy }}
+  strategy: {{ toYaml .Values.wordpress.updateStrategy | nindent 4 }}
+  {{- end}}
+  template:
+    metadata:
+      labels:
+        {{- include "wordpress.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - image: {{ .Values.wordpress.image.repository }}:{{ .Chart.AppVersion }}
+        name: {{ .Chart.Name }}
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: {{ .Values.wordpress.externalDatabase.host }}
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ printf "%s-%s" .Values.wordpress.externalDatabase.type "pass" }}
+              key: password
+        ports:
+        - containerPort: 80
+          name: {{ include "wordpress.fullname" . }}
+        volumeMounts:
+        - name: wordpress-persistent-storage
+          mountPath: /var/www/html
+      volumes:
+      - name: wordpress-persistent-storage
+      {{- if .Values.wordpress.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.wordpress.persistence.existingClaim | default (include "wordpress.fullname" .) }}
+      {{- end }}
