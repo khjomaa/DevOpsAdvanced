@@ -1,0 +1,118 @@
+Started by user admin
+Running in Durability level: MAX_SURVIVABILITY
+Loading library jenkins-shared-library@master
+Attempting to resolve master from remote references...
+ > git --version # timeout=10
+ > git ls-remote -h -- https://github.com/avielb/jenkins-shared-library.git # timeout=10
+Found match: refs/heads/master revision 786ef2039261c63b546a02d31ed954f4e75b959c
+No credentials specified
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/avielb/jenkins-shared-library.git # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/avielb/jenkins-shared-library.git
+ > git --version # timeout=10
+ > git fetch --no-tags --progress -- https://github.com/avielb/jenkins-shared-library.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 786ef2039261c63b546a02d31ed954f4e75b959c (master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 786ef2039261c63b546a02d31ed954f4e75b959c # timeout=10
+Commit message: "Create .gitignore"
+First time build. Skipping changelog.
+[Pipeline] Start of Pipeline
+[Pipeline] podTemplate
+[Pipeline] {
+[Pipeline] node
+Still waiting to schedule task
+Waiting for next available executor
+Agent centos-33015555-2d03-4364-b400-d8a9760b51c0-4x9pm-mzx05 is provisioned from template Kubernetes Pod Template
+---
+apiVersion: "v1"
+kind: "Pod"
+metadata:
+  annotations:
+    buildUrl: "http://jenkins:8080/job/centos-shared-library/1/"
+  labels:
+    jenkins/jenkins-jenkins-slave: "true"
+    jenkins/centos-33015555-2d03-4364-b400-d8a9760b51c0: "true"
+  name: "centos-33015555-2d03-4364-b400-d8a9760b51c0-4x9pm-mzx05"
+spec:
+  containers:
+  - image: "centos"
+    imagePullPolicy: "IfNotPresent"
+    name: "centos"
+    resources:
+      limits: {}
+      requests: {}
+    securityContext:
+      privileged: false
+    tty: true
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  - env:
+    - name: "JENKINS_SECRET"
+      value: "********"
+    - name: "JENKINS_TUNNEL"
+      value: "jenkins-agent:50000"
+    - name: "JENKINS_AGENT_NAME"
+      value: "centos-33015555-2d03-4364-b400-d8a9760b51c0-4x9pm-mzx05"
+    - name: "JENKINS_NAME"
+      value: "centos-33015555-2d03-4364-b400-d8a9760b51c0-4x9pm-mzx05"
+    - name: "JENKINS_AGENT_WORKDIR"
+      value: "/home/jenkins/agent"
+    - name: "JENKINS_URL"
+      value: "http://jenkins:8080/"
+    image: "jenkins/jnlp-slave:3.35-5-alpine"
+    name: "jnlp"
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  nodeSelector:
+    beta.kubernetes.io/os: "linux"
+  restartPolicy: "Never"
+  securityContext: {}
+  volumes:
+  - emptyDir:
+      medium: ""
+    name: "workspace-volume"
+
+Running on centos-33015555-2d03-4364-b400-d8a9760b51c0-4x9pm-mzx05 in /home/jenkins/agent/workspace/centos-shared-library
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Run CentOS)
+[Pipeline] container
+[Pipeline] {
+[Pipeline] sh
++ cat /etc/centos-release /etc/os-release /etc/redhat-release /etc/system-release
+CentOS Linux release 8.1.1911 (Core)
+NAME="CentOS Linux"
+VERSION="8 (Core)"
+ID="centos"
+ID_LIKE="rhel fedora"
+VERSION_ID="8"
+PLATFORM_ID="platform:el8"
+PRETTY_NAME="CentOS Linux 8 (Core)"
+ANSI_COLOR="0;31"
+CPE_NAME="cpe:/o:centos:centos:8"
+HOME_URL="https://www.centos.org/"
+BUG_REPORT_URL="https://bugs.centos.org/"
+
+CENTOS_MANTISBT_PROJECT="CentOS-8"
+CENTOS_MANTISBT_PROJECT_VERSION="8"
+REDHAT_SUPPORT_PRODUCT="centos"
+REDHAT_SUPPORT_PRODUCT_VERSION="8"
+
+CentOS Linux release 8.1.1911 (Core)
+CentOS Linux release 8.1.1911 (Core)
+[Pipeline] }
+[Pipeline] // container
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // podTemplate
+[Pipeline] End of Pipeline
+Finished: SUCCESS
