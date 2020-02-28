@@ -1,0 +1,10 @@
+{
+  "ImageId": "ami-0a887e401f7654935",
+  "Placement": {
+    "AvailabilityZone": "string"
+  },
+  "InstanceType": "t2.micro",
+  "SecurityGroupIds": ["sg-d75d598f"],
+  "SecurityGroups": ["default"],
+  "UserData": "IyEvdXNyL2Jpbi9iYXNoCnl1bSBpbnN0YWxsIGRvY2tlciAteQpzeXN0ZW1jdGwgZW5hYmxlIGRvY2tlcgpzeXN0ZW1jdGwgc3RhcnQgZG9ja2VyCmRvY2tlciBydW4gLWQgXAotZSBEQl9IT1NUPTU0LjE2MC44NS4xNzM6MzMwNiBcCi1lIERCX0RBVEFCQVNFPWJvb2tzdGFjayBcCi1lIERCX1VTRVJOQU1FPWJvb2tzdGFjayBcCi1lIERCX1BBU1NXT1JEPXNlY3JldCBcCi1wIDgwODA6ODAgXApzb2xpZG5lcmQvYm9va3N0YWNrOjAuMjcuNQ=="
+}
