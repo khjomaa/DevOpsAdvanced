@@ -13,12 +13,16 @@
     ![](images/aws2.png)
 5. Define the following properties:
     - Template name: **bookstack**
+    
     ![](images/aws3.png)
     - Amazon machine image (AMI): **Amazon Linux 2 AMI (HVM), SSD Volume type (ami-0a887e401f7654935)**
+    
     ![](images/aws4.png)
     - Instance type: **t2.micro**
+    
     ![](images/aws5.png)
     - Network settings: Set "Security groups" to "default"
+    
     ![](images/aws6.png)
     - Advanced details: set "User data" to:
         ```shell script
