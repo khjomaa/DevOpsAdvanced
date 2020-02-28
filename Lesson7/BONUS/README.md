@@ -1,8 +1,8 @@
 ## BONUS
 
 Useful docs:
-    - [create-launch-template](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-launch-template.html)
-    - [create-auto-scaling-group](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/create-auto-scaling-group.html)
+- [create-launch-template](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-launch-template.html)
+- [create-auto-scaling-group](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/create-auto-scaling-group.html)
 
 ### Mysql
 - Create launch template
