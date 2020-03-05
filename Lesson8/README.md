@@ -26,7 +26,9 @@ Define in terraform the following resources:
     
 ### **Solutions:**
 
-* **Q1, Q2 and Q3**
-    - See folder Q1-Q3
+* **Q1, Q2**
+    - See folder Q1-Q2
+* **Q3**
+    - See folder Q3
 * **Bonus**
     - See folder BONUS
