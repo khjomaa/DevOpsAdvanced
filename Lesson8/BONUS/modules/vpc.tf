@@ -4,6 +4,9 @@ resource "aws_vpc" "my_vpc" {
   enable_dns_hostnames = true
   enable_classiclink = false
   instance_tenancy = "default"
+  tags = {
+    Name = "MyVPC"
+  }
 }
 
 resource "aws_subnet" "subnet-a" {
@@ -13,7 +16,6 @@ resource "aws_subnet" "subnet-a" {
   availability_zone = var.AWS_AVAILABILITY_ZONE_1
   tags = {
     Name = "Subnet A"
-    Tier = "NewVPC"
   }
 }
 
@@ -24,6 +26,5 @@ resource "aws_subnet" "subnet-b" {
   availability_zone = var.AWS_AVAILABILITY_ZONE_2
   tags = {
     Name = "Subnet B"
-    Tier = "NewVPC"
   }
 }

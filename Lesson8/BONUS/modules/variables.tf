@@ -27,10 +27,10 @@ variable "SUBNET_B_CIDR" {
 
 # Data obejct are calculated before applying actual resource creation
 # This is why they are not found at the first time you will run 'terraform apply'
-data "aws_subnet_ids" "my-subnets" {
-  vpc_id = aws_vpc.my_vpc.id
-  depends_on = [aws_vpc.my_vpc]
-}
+//data "aws_subnet_ids" "my-subnets" {
+//  vpc_id = aws_vpc.my_vpc.id
+//  depends_on = [aws_vpc.my_vpc]
+//}
 
 # Now you have more than one default security group
 # so let's filter it with the VPC ID as well

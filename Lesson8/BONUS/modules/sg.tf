@@ -5,18 +5,18 @@ resource "aws_security_group" "servers-sg" {
 
 resource "aws_security_group_rule" "ingress-all" {
   security_group_id = aws_security_group.servers-sg.id
-  from_port         = 0
-  to_port           = 0
-  protocol          = -1
+  from_port         = 80
+  to_port           = 80
+  protocol          = "TCP"
   type              = "ingress"
-  self              = true
+  cidr_blocks = ["0.0.0.0/0"]
 }
 
 resource "aws_security_group_rule" "egress-all" {
-  from_port         = 80
+  from_port         = 0
   protocol          = "TCP"
   security_group_id = aws_security_group.servers-sg.id
   cidr_blocks       = ["0.0.0.0/0"]
-  to_port           = 80
+  to_port           = 0
   type              = "egress"
 }
