@@ -8,12 +8,14 @@ Create the bucket:
     - ```cd cd BONUS/Q3/projects/my-bucket```
     - ```terraform init```
     - ```terraform apply --auto-approve```
+    
 ![](../../images/helm-1.png)
 
 Add S3 bucket as helm repo:
 - ```helm repo add my-charts s3://khalil-helm-central-bucket/charts```
 - ```helm repo update```
 - ```helm repo list```
+
 ![](../../images/helm-2.png)
     
 Pull helm chart and push it to S3 bucket:
