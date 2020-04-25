@@ -1,0 +1,13 @@
+master:
+  adminPassword: "admin"
+  serviceType: NodePort
+  nodePort: 32323
+  installPlugins:
+    - kubernetes:1.25.3            # https://plugins.jenkins.io/kubernetes/
+    - workflow-job:2.38            # https://plugins.jenkins.io/workflow-job/
+    - workflow-aggregator:2.6      # https://plugins.jenkins.io/workflow-aggregator/
+    - credentials-binding:1.22     # https://plugins.jenkins.io/credentials-binding/
+    - git:4.2.2                    # https://plugins.jenkins.io/git/
+    - kubernetes-cd:2.3.0          # https://plugins.jenkins.io/kubernetes-cd/
+    - pipeline-utility-steps:2.5.0 # https://plugins.jenkins.io/pipeline-utility-steps/
+    - pipeline-aws:1.41            # https://plugins.jenkins.io/pipeline-aws/
