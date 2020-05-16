@@ -1,4 +1,4 @@
-# Lesson 10 HomeWork
+# Lesson 11 HomeWork
 
 ### **Exercise**
 Create a terraform project that will do the following:
